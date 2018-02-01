@@ -10,12 +10,15 @@
       <ul class="nav navbar-nav">
         <li routerLinkActive="active"><a routerLink="/recipes">Recipes <span class="sr-only">(current)</span></a></li>
         <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping-list</a></li>
-        <li routerLinkActive="active"><a routerLink="/signup">Register</a></li>
-        <li routerLinkActive="active"><a routerLink="/signin">Log in</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li appDropdown class="dropdown">
+        <ng-template [ngIf]="!_authService.isAuthenticated()">
+          <li routerLinkActive="active"><a routerLink="/signup">Register</a></li>
+          <li routerLinkActive="active"><a routerLink="/signin">Log in</a></li>
+        </ng-template>
+        <li *ngIf="_authService.isAuthenticated()" (click)="onLogOut()"><a routerLink="/signin">Log out</a></li>
+        <li appDropdown class="dropdown" *ngIf="_authService.isAuthenticated()">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a (click)="onSave($event)">Save</a></li>

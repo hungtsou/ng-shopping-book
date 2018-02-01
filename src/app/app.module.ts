@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 // modules
 import { AppRouting } from './app-routing.module';
+import { RecipesModule } from './recipes/recipes.module';
 // directives
 import { dropdownDirective } from './shared/dropdown.directive';
 //services
@@ -16,31 +17,20 @@ import { AuthService } from './auth/auth.service';
 //components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { RecipesDetailComponent } from './recipes/recipes-detail/recipes-detail.component';
-import { RecipesListComponent } from './recipes/recipes-list/recipes-list.component';
-import { RecipesItemComponent } from './recipes/recipes-list/recipes-item/recipes-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
-import { RecipesStartComponent } from './recipes/recipes-start/recipes-start.component';
-import { RecipesEditComponent } from './recipes/recipes-edit/recipes-edit.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
+import { AuthGuard } from './auth/auth-guard.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    RecipesComponent,
-    RecipesDetailComponent,
-    RecipesListComponent,
-    RecipesItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
     dropdownDirective,
-    RecipesStartComponent,
-    RecipesEditComponent,
     SignupComponent,
     SigninComponent
   ],
@@ -49,9 +39,13 @@ import { SigninComponent } from './auth/signin/signin.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRouting
+    AppRouting,
+    RecipesModule
   ],
-  providers: [ShoppingService, RecipesService, DataStorage, AuthService],
+  exports: [
+    dropdownDirective
+  ],
+  providers: [ShoppingService, RecipesService, DataStorage, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
