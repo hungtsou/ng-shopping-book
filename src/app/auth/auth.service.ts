@@ -26,7 +26,7 @@ export class AuthService {
         response => {
           this.storeToken()
             .then(
-              () => this.router.navigate(['/'])
+              () => this.router.navigate(['/recipes'])
             )
         }
       )
