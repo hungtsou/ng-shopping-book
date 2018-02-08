@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 // Services
-import { DataStorage } from '../shared/data-storage.service';
-import { AuthService } from '../auth/auth.service';
+import { DataStorage } from '../../shared/data-storage.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +9,9 @@ import { AuthService } from '../auth/auth.service';
 })
 
 export class HeaderComponent implements OnInit {
+
+  public isAuthenticated:Boolean = this._authService.isAuthenticated();
+
   constructor(private _dataStorage:DataStorage,
               private  _authService:AuthService) {}
 

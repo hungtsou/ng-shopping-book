@@ -17,8 +17,9 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   private listSelectedSubscriber:Subscription;
   private listItemIndex:number;
-  private editMode:boolean = false;
   private editIngredient:Ingredient;
+
+  public editMode:boolean = false;
 
   constructor(private shoppingService:ShoppingService) { }
 

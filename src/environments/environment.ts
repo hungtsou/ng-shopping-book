@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   envName: 'dev',
-  api: 'dev.perro-loko.com'
+  api: 'http://dev-test'
 };

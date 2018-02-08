@@ -5,10 +5,10 @@ import { HttpModule } from '@angular/http';
 
 // modules
 import { AppRouting } from './app-routing.module';
-import { RecipesModule } from './recipes/recipes.module';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
+import { CoreModule } from './core/core.module';
 
 //services
 import { ShoppingService } from './shopping-list/shopping.service';
@@ -18,26 +18,22 @@ import { AuthService } from './auth/auth.service';
 
 //components
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { AuthGuard } from './auth/auth-guard.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRouting,
-    RecipesModule,
     SharedModule,
     ShoppingListModule,
-    AuthModule
+    AuthModule,
+    CoreModule
   ],
-  providers: [ShoppingService, RecipesService, DataStorage, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
